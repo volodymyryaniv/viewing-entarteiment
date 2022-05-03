@@ -1,0 +1,16 @@
+.RatingsButtons {
+  display: flex;
+    .scale {
+      background-color: green;
+      margin: 5px;
+      width: 15px;
+      height: 15px;
+      &:hover{
+        background-color: yellow;
+      }
+    }
+    .rating{
+      display:none;
+    }
+
+}

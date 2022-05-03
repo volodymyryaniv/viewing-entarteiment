@@ -1,0 +1,15 @@
+.shopCard{
+  box-sizing: border-box;
+  background-color: rgba(231, 226, 226,0.8);
+  padding: 20px;
+  .image{
+    display:block;
+    width: 60%;
+    margin: 0 auto;
+  }
+  .textContent{
+    text-align: left;
+    line-height: 0.6;
+    padding: 10px;
+  }
+}

@@ -1,0 +1,14 @@
+
+.historyBg {
+  background: #348cb2 url(../../img/background/history-bg.jpeg) center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}

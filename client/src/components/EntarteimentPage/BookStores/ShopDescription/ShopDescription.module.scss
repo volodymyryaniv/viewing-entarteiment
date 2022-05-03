@@ -1,0 +1,28 @@
+.ShopDescription {
+  box-sizing: border-box;
+  margin: 140px auto 20px;
+  padding: 20px;
+  background-color: rgba(88, 59, 59,0.6);
+  max-width: 1440px;
+  border-radius: 10px;
+  .container {
+    background-color: rgba(236, 225, 225, 0.9);
+    box-shadow: 0px 0px 19px rgb(34, 2, 2);
+    border-radius: 15px;
+    padding: 20px;
+    .content{
+      display: flex;
+      justify-content: flex-start;
+      .image{
+        display: block;
+        width: 45%;
+      }
+      .textContent{
+        margin-left: 50px;
+        text-align: left;
+        max-width: 55%;
+      }
+    }
+    
+  }
+}

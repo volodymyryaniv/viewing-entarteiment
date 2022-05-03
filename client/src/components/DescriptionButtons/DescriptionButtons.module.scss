@@ -1,0 +1,13 @@
+.DescriptionButtons {
+   display: grid;
+   grid-template-columns: auto auto 1fr auto;
+   margin-top: 15px;
+   button{
+      max-width: 150px;
+      min-width: 100px;
+   }
+   .rating {
+      justify-self: start;
+   }
+   
+}

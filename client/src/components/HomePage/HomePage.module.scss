@@ -1,0 +1,43 @@
+.mainBackground {
+  background: #348cb2 url('../../img/background/mainBg.jpeg') center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  .title{
+    font-size: calc(10px + 12vmin);
+    line-height: 0.9;
+    color: white;
+  }
+  .link{
+    background-color: rgba(71, 70, 69,0.8);
+    border-radius: 50%;
+    text-decoration: none;
+    color: white;
+    font-size: 2em;
+    font-weight: 700;
+    width: 150px;
+    height: 150px;
+    padding: 40px;
+    // animation: link-spin infinite 20s linear;
+    span{
+      font-size: 3.5em;
+      line-height:0.7
+    }
+  }
+}
+
+// @keyframes link-spin {
+//   from {
+//     transform: rotateX(0deg);
+//   }
+//   to {
+//     transform: rotateX(3600deg);
+//   }
+// } 
