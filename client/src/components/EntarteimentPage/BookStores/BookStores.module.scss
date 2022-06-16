@@ -1,29 +1,11 @@
-.BookStores {
-  background: #348cb2 url(../../../img/background/entart-bg.jpeg) center;
-  background-color: rgba(122, 110, 110,0.8);
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: -1;
-  .background{
+.background{
+    width: 80%;
     background-color: rgba(122, 110, 110,0.5);
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: -1;
-    overflow: auto;
     .cardContainer{
-      padding:40px;
-      max-width: 1200px;
-      margin: 100px auto 10px;
+      padding: 20px;
       display: grid;
       grid-template-columns: repeat(4,1fr);
       grid-template-rows: repeat(2,minmax(100px, 350px));
       gap: 1.1rem;
     }
   }
-}

@@ -18,7 +18,7 @@ const ShopDescription = ({shop,getOne}) => {
   const showFeedbackHandler = () => setShowFeedbacks(!showFeedbacks)
   
   return (
-    <section className={styles.ShopDescription} data-testid="ShopDescription">
+    <div className={styles.ShopDescription} data-testid="ShopDescription">
       {shop && (
         <article className={styles.container}>
           <div className={styles.content}>
@@ -42,7 +42,7 @@ const ShopDescription = ({shop,getOne}) => {
           {showFeedbacks && <FeedbackPage feedbacks={shop.feedback}/>}
         </article>
       )}
-    </section>
+    </div>
   );
 };
 

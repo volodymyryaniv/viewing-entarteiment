@@ -1,28 +1,26 @@
 import React from 'react';
-import {Outlet,useMatch,useLocation} from 'react-router-dom';
-import routes from '../../consts/routes.js';
+import {Outlet} from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
+import routes from '../../consts/routes';
+import FilterComponent from './FilterComponent';
 import PropTypes from 'prop-types';
-import ButtonToGo from './ButtonToGo';
+
 import styles from './EntarteimentPage.module.scss';
 
 const EntarteimentPage = () => {
-  const {bookStoresPage,caffesPage,cinemasPage} = routes;
-  const categories = [bookStoresPage,caffesPage,cinemasPage];
-
   const pathname = useLocation().pathname;
-  
-  return pathname === `/${routes.attractionsPage}` ? (
+  const style = pathname === `/${routes.attractionsPage }`
+    ? styles.wrapperMain
+    : styles.wrapperList
+  return  (
     <div className={styles.EntarteimentPage}>
-      <h1>I want to...</h1>
-      <article className={styles.container}>
-        {categories.map((el) => {
-          return <ButtonToGo key={el} category={el} />;
-        })}
-      </article>
+      <div className={style}>
+        <h1 className={styles.title}>I want to...</h1>
+        <FilterComponent/>
+        <Outlet/>
+      </div>
     </div>
-  ) : (
-    <Outlet />
-  );
+  )
 };
 
 

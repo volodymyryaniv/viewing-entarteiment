@@ -16,19 +16,13 @@ const BookStores = ({list,getAll}) => {
   }, []);
   
   return (
-    <section className={styles.BookStores} data-testid="BookStores">
       <div className={styles.background}>
-        {pathname === `/${routes.attractionsPage}/${routes.bookStoresPage}` ? (
-          <article className={styles.cardContainer}>
-            {list.map((shop) => {
-              return <BookStore key={shop._id} shop={shop} />;
-            })}
-          </article>
-        ) : (
-          <Outlet />
-        )}
+        <article className={styles.cardContainer}>
+          {list.map((shop) => {
+            return <BookStore key={shop._id} shop={shop} />;
+          })}
+        </article>
       </div>
-    </section>
   );
 };
 
