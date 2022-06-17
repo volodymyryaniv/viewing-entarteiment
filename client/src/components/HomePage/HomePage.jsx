@@ -8,11 +8,12 @@ const HomePage = () => {
   return (
     <article className={styles.mainBackground}>
       <h1 className={styles.title}>Lviv entertainment</h1>
-      <NavLink to={routes.topPage} className={styles.link}>Show top <span>5</span></NavLink>
+      <NavLink to={routes.topPage} className={styles.link}>
+        Show top <span>5</span>
+      </NavLink>
     </article>
   );
-}
-
+};
 
 HomePage.propTypes = {};
 

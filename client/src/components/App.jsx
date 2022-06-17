@@ -6,39 +6,46 @@ import EntarteimentNavigation from './EntarteimentPage/EntarteimentNavigation';
 import ContactsPage from './ContactsPage';
 import TopPlaces from './TopPlaces';
 import BookStores from './EntarteimentPage/BookStores';
-import Caffes from './EntarteimentPage/Caffes';
+import Cafes from './EntarteimentPage/Cafes';
 import Cinemas from './EntarteimentPage/Cinemas';
-import ShopDescription from './EntarteimentPage/BookStores/ShopDescription';
-import {Routes, Route} from 'react-router-dom';
+import ItemDescription from './EntarteimentPage/ItemDescription';
+import { Routes, Route } from 'react-router-dom';
 import routes from '../consts/routes.js';
 import styles from './App.module.scss';
 
 function App() {
+  const {
+    homePage,
+    topPage,
+    historyPage,
+    attractionsPage,
+    bookStoresPage,
+    cafesPage,
+    cinemasPage,
+    contactsPage,
+    dynamicParam,
+  } = routes;
   return (
     <div className={styles.container}>
       <main className={styles.App}>
       <Navigation/>
         <Routes>
-          <Route path={routes.homePage} element={<HomePage/>}/>
-          <Route path={routes.topPage} element={<TopPlaces/>}/>
-          <Route path={routes.historyPage} element={<HistoryPage/>}/>
-          <Route path={`${routes.attractionsPage}/*`} element={<EntarteimentPage/>}>
+          <Route path={homePage} element={<HomePage/>}/>
+          <Route path={topPage} element={<TopPlaces/>}/>
+          <Route path={historyPage} element={<HistoryPage/>}/>
+          <Route path={`${attractionsPage}/*`} element={<EntarteimentPage/>}>
             <Route index element={<EntarteimentNavigation/>}/>
-            <Route path={`${routes.bookStoresPage}`} element={<BookStores/>}/>
-            <Route path={`${routes.bookStoresPage}/${routes.dynamicParam}`} element={<ShopDescription/>}/>
+            <Route path={bookStoresPage} element={<BookStores/>}/>
+            <Route path={`${bookStoresPage}/${dynamicParam}`} element={<ItemDescription/>}/>
+            <Route path={cafesPage} element={<Cafes/>}/>
+            <Route path={`${cafesPage}/${dynamicParam}`} element={<ItemDescription/>}/>
+            <Route path={cinemasPage} element={<Cinemas/>}/>
+            <Route path={`${cinemasPage}/${dynamicParam}`} element={<ItemDescription/>}/>
           </Route>
-          <Route path={routes.caffesPage} element={<Caffes/>}/>
-          <Route path={routes.cinemasPage} element={<Cinemas/>}/>
-          < Route path={routes.contactsPage} element={<ContactsPage/>}/>
+          < Route path={contactsPage} element={<ContactsPage/>}/>
         </Routes>
       </main>
     </div>
   );
 }
 export default App;
-
-// function hours(start, end) {
-//   return Array(end - start + 1)
-//     .fill()
-//     .map((_, idx) => start + idx);
-// }

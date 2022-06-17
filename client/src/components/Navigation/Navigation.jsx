@@ -1,10 +1,10 @@
 import React from 'react';
-import {Link,NavLink,Outlet} from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import routes from '../../consts/routes.js';
 import navLinks from '../../consts/navigationData.js';
 import PropTypes from 'prop-types';
 import styles from './Navigation.module.scss';
-import logo from '../../img/icons/lviv.jpg'
+import logo from '../../img/icons/lviv.jpg';
 
 const Navigation = () => {
   const name = ({ isActive }) => (isActive ? styles.active : styles.links);
@@ -25,7 +25,6 @@ const Navigation = () => {
     </nav>
   );
 };
-
 
 Navigation.propTypes = {};
 

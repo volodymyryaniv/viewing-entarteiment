@@ -3,9 +3,9 @@ const routes = {
    topPage: 'top',
    historyPage: 'history',
    attractionsPage: 'attractions',
-   bookStoresPage: 'book-store',
+   bookStoresPage: 'bookstores',
    dynamicParam: ':id',
-   caffesPage: 'caffees',
+   cafesPage: 'cafes',
    cinemasPage: 'cinemas',
    contactsPage: 'contacts'
 }

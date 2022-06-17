@@ -2,11 +2,11 @@ import express from 'express';
 import BookStores from '../schemas/BookStoreSchema.js';
 const bookStoresRouter = express.Router();
 
-bookStoresRouter.get('/attractions/book-store',async (req,res) => {
+bookStoresRouter.get('/attractions/bookstores',async (req,res) => {
    const data = await BookStores.find()
    res.send(data);
 })
-bookStoresRouter.get('/attractions/book-store/:id',async (req,res) => {
+bookStoresRouter.get('/attractions/bookstores/:id',async (req,res) => {
    const data = await BookStores.findById(req.params.id)
    res.send(data);
 })

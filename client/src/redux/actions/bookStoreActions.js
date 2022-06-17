@@ -1,19 +1,19 @@
 import {getBooks,getBookById} from '../../client-api/bookStore-api.js';
 import types from '../consts.js';
 
-const startAllBooksAction = () => {
+const startAllItemsAction = () => {
   return {
     type: types.getStarAll
   }
 }
 
-const successAllBooksAction = (data) => {
+const successAllItemsAction = (data) => {
   return {
     type: types.getSuccessAll,
     payload: data
   }
 }
-const failAllBooksAction = (error) => {
+const failAllItemsAction = (error) => {
   return {
     type: types.getFailAll,
     payload: {
@@ -22,19 +22,19 @@ const failAllBooksAction = (error) => {
   }
 }
 
-const startOneBookAction = () => {
+const startOneItemAction = () => {
   return {
     type: types.getStarOne
   }
 }
 
-const successOneBookAction = (data) => {
+const successOneItemAction = (data) => {
   return {
     type: types.getSuccessOne,
     payload: data
   }
 }
-const failOneBookAction = (error) => {
+const failOneItemAction = (error) => {
   return {
     type: types.getFailOne,
     payload: {
@@ -43,22 +43,23 @@ const failOneBookAction = (error) => {
   }
 }
 
-export const fetchAllBookStores = () => async dispatch => {
-  dispatch(startAllBooksAction())
+export const fetchOneItemStores = (id, path) => async dispatch => {
+  dispatch(startOneItemAction())
   try {
-    const list = await getBooks()
-    dispatch(successAllBooksAction(list.data))
+    const list = await getBookById(id, path)
+    dispatch(successOneItemAction(list.data))
   } catch (error) {
-    dispatch(failAllBooksAction(error))
+    dispatch(failOneItemAction(error))
   }
 }
 
-export const fetchOneBookStores = (id) => async dispatch => {
-  dispatch(startOneBookAction())
+
+export const fetchAllItems = (path) => async dispatch => {
+  dispatch(startAllItemsAction())
   try {
-    const list = await getBookById(id)
-    dispatch(successOneBookAction(list.data))
+    const list = await getBooks(path);
+    dispatch(successAllItemsAction(list.data))
   } catch (error) {
-    dispatch(failOneBookAction(error))
+    dispatch(failAllItemsAction(error))
   }
 }

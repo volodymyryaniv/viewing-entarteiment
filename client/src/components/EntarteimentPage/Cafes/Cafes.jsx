@@ -1,10 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styles from './BookStores.module.scss';
-import ItemComponent from '../ItemComponent'
-import withFethList from '../../withHoc/withFetchAll.jsx';
+import styles from './Cafes.module.scss';
+import ItemComponent from '../ItemComponent';
+import withFethList from '../../withHoc/withFetchAll';
 
-const BookStores = ({ list }) => {
+const Caffes = ({list}) => {
+  console.log(list)
   return (
     <div className={styles.background}>
       <article className={styles.cardContainer}>
@@ -13,9 +14,11 @@ const BookStores = ({ list }) => {
         })}
       </article>
     </div>
-  );
+  )
 };
 
-BookStores.propTypes = {};
+Caffes.propTypes = {};
 
-export default withFethList(BookStores);
+Caffes.defaultProps = {};
+
+export default withFethList(Caffes);

@@ -5,8 +5,8 @@ import routes from '../../../consts/routes';
 import ButtonToGo from '../ButtonToGo';
 
 const EntarteimentNavigation = () => {
-  const {bookStoresPage,caffesPage,cinemasPage} = routes;
-  const categories = [bookStoresPage,caffesPage,cinemasPage];
+  const {bookStoresPage,cafesPage,cinemasPage} = routes;
+  const categories = [bookStoresPage,cafesPage,cinemasPage];
   return (
     <article className={styles.container}>
       {categories.map((el) => {
