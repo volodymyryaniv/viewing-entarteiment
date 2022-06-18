@@ -4,11 +4,24 @@ import styles from './ItemDescription.module.scss';
 import DescriptionButtons from '../../DescriptionButtons';
 import FeedbackPage from '../../FeedbackPage';
 import withFethItemById from '../../withHoc/withFetchItemById';
+import RatingsButtons from '../../DescriptionButtons/RatingsButtons';
+import { updateRating } from '../../../client-api/updateData-api';
 
-const ItemDescription = ({shop}) => {
+const ItemDescription = ({shop, path }) => {
+  const [rating, setRating] = React.useState(0)
   const [showFeedbacks, setShowFeedbacks] = React.useState(false);
   const showFeedbackHandler = () => setShowFeedbacks(!showFeedbacks)
-  console.log(shop)
+
+
+  const addEstimate = async (e) => {
+    const rating = await updateRating(e.target.value, path);
+    setRating(rating.data.rating)
+  }
+
+  React.useEffect (() => {
+      ////////////////////////////////////////////////////////////////////////// add action for redux for new rating update
+    setRating(shop.rating)
+  }, [shop.rating]);
 
   return (
     <div className={styles.ItemDescription} data-testid="ItemDescription">
@@ -28,10 +41,11 @@ const ItemDescription = ({shop}) => {
                 Working hours: {shop.openFrom}-{shop.openUntil}
               </p>
               <p>{shop.description}</p>
-              <p>Rating: {shop.rating}</p>
+              <p>Rating: {rating}</p>
             </div>
           </div>
           <DescriptionButtons showFeedback={showFeedbackHandler}/>
+          <RatingsButtons addEstimate={addEstimate}/>
           {showFeedbacks && <FeedbackPage feedbacks={shop.feedback}/>}
         </article>
       )}

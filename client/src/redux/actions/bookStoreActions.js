@@ -1,4 +1,4 @@
-import {getBooks,getBookById} from '../../client-api/bookStore-api.js';
+import { getBooks,getBookById } from '../../client-api/getData-api.js';
 import types from '../consts.js';
 
 const startAllItemsAction = () => {

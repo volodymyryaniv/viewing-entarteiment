@@ -38,6 +38,9 @@ const cafeSchema = new mongoose.Schema({
       type: String,
       required: true
     }
+  },
+  estimations: {
+    type: Array,
   }
 })
 

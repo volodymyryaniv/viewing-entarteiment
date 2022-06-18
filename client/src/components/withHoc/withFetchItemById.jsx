@@ -12,7 +12,7 @@ const withFetchById = WrappedComponent => {
       props.fetchOneItemStores(pathWithId);
     }, []);
 
-    return <WrappedComponent shop={props.shop}/>
+    return <WrappedComponent shop={props.shop} path={pathWithId}/>
   }
 }
 

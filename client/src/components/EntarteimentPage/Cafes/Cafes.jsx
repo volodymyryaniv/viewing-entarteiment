@@ -5,7 +5,6 @@ import ItemComponent from '../ItemComponent';
 import withFethList from '../../withHoc/withFetchAll';
 
 const Caffes = ({list}) => {
-  console.log(list)
   return (
     <div className={styles.background}>
       <article className={styles.cardContainer}>
