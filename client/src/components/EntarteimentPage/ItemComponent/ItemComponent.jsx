@@ -26,7 +26,7 @@ const BookStore = ({
         <p>
           Working hours: {openFrom}-{openUntil}
         </p>
-        <p>Raiting: {rating}</p>
+        <p>Raiting: {rating.toFixed(1)}</p>
       </div>
     </article>
   );

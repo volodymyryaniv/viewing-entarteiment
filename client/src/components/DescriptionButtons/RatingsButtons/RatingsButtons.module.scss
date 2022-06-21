@@ -1,16 +1,59 @@
-.RatingsButtons {
+.container{
   display: flex;
-    .scale {
-      background-color: green;
-      margin: 5px;
-      width: 15px;
-      height: 15px;
-      &:hover{
-        background-color: yellow;
+  justify-content: start;
+  align-items: center;
+  .ratingsButtons {
+    position: relative;
+    font-size: 45px;
+    line-height: 1;
+    &::before{
+      content: '★★★★★';
+      display: block;
+      color: rgb(255, 255, 255);
+    }
+    .ratingActive{
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 80%;
+      height: 100%;
+      overflow: hidden;
+      &::before{
+        content: '★★★★★';
+        color: rgb(255, 251, 43);
       }
     }
-    .rating{
-      display:none;
+    .ratingItems{
+      display: flex;
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      .label {
+        flex: 1 1 20%;
+        position: relative;
+        opacity: 0;
+        height: 100%;
+        &:hover{
+          opacity: 1;
+          color: rgb(163, 140, 35);
+        }
+        .ratingItem {
+          opacity: 0;
+          position: absolute;
+          top: 0;
+          left: 0;
+          height: 100%;
+          width: 100%;
+          margin: 0;
+        }
+      }
     }
-
+  }
+  .ratingValue{
+    line-height: 1;
+    font-size: 25px;
+    padding-left: 5px;
+  }
 }

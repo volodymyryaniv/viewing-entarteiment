@@ -28,10 +28,13 @@ const startOneItemAction = () => {
   }
 }
 
-const successOneItemAction = (data) => {
+export const successOneItemAction = (data) => {
   return {
     type: types.getSuccessOne,
-    payload: data
+    payload: {
+      ...data,
+      rating: data.rating.toFixed(1),
+    },
   }
 }
 const failOneItemAction = (error) => {
