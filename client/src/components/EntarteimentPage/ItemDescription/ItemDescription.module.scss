@@ -1,4 +1,4 @@
-.ItemDescription {
+.itemDescription {
   background-color: rgba(122, 110, 110,0.5);
   width: 80%;
   padding: 20px;
@@ -13,13 +13,28 @@
       .image{
         display: block;
         width: 45%;
+        border: 2px solid rgba(255, 255, 255, 0.7);
+        border-radius: 5px;
       }
       .textContent{
         margin-left: 50px;
         text-align: left;
         max-width: 55%;
+        h1{
+          text-transform: uppercase;
+          color: rgb(212, 165, 33);
+          font-size: 2rem;
+          line-height: 1;
+        }
+        p{
+          font-weight: 700;
+          color: rgb(84, 86, 88);
+          & span{
+            font-weight: 400;
+            color: rgb(20, 20, 20);
+          }
+        }
       }
-    }
-    
+    }  
   }
 }

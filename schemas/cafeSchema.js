@@ -31,6 +31,9 @@ const cafeSchema = new mongoose.Schema({
   },
   feedback: {
     type: Array,
+    id:{
+      type: String,
+    },
     date: {
       type: Date
     },
@@ -45,4 +48,3 @@ const cafeSchema = new mongoose.Schema({
 })
 
 export default mongoose.model('Cafes', cafeSchema);
-

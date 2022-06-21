@@ -4,15 +4,14 @@ import styles from './ItemDescription.module.scss';
 import DescriptionButtons from '../../DescriptionButtons';
 import FeedbackPage from '../../FeedbackPage';
 import withFethItemById from '../../withHoc/withFetchItemById';
-import RatingsButtons from '../../DescriptionButtons/RatingsButtons';
-import { updateRating } from '../../../client-api/updateData-api';
+import RatingsButtons from '../../RatingsButtons';
 
-const ItemDescription = ({ shop, addEstimate }) => {
+const ItemDescription = ({ shop, addEstimate, addFeedback }) => {
   const [showFeedbacks, setShowFeedbacks] = React.useState(false);
   const showFeedbackHandler = () => setShowFeedbacks(!showFeedbacks);
 
   return (
-    <div className={styles.ItemDescription} data-testid="ItemDescription">
+    <div className={styles.itemDescription} data-testid="ItemDescription">
       {shop && (
         <article className={styles.container}>
           <div className={styles.content}>
@@ -22,18 +21,18 @@ const ItemDescription = ({ shop, addEstimate }) => {
               className={styles.image}
             />
             <div className={styles.textContent}>
-              <h1>Shop name: {shop.name}</h1>
-              <p>Address: {shop.address}</p>
-              <p>Phone: {shop.phone}</p>
+              <h1>{shop.name}</h1>
+              <p>Address: <span>{shop.address}</span></p>
+              <p>Phone: <span>{shop.phone}</span></p>
               <p>
-                Working hours: {shop.openFrom}-{shop.openUntil}
+                Working hours: <span>{shop.openFrom}-{shop.openUntil}</span>
               </p>
-              <p>{shop.description}</p>
+              <p><span>{shop.description}</span></p>
+              <RatingsButtons addEstimate={addEstimate} rating={shop.rating}/>
             </div>
           </div>
           <DescriptionButtons showFeedback={showFeedbackHandler} />
-          <RatingsButtons addEstimate={addEstimate} rating={shop.rating}/>
-          {showFeedbacks && <FeedbackPage feedbacks={shop.feedback} />}
+          {showFeedbacks && <FeedbackPage feedbacks={shop.feedback} addFeedback={addFeedback}/>}
         </article>
       )}
     </div>
@@ -43,4 +42,3 @@ const ItemDescription = ({ shop, addEstimate }) => {
 ItemDescription.propTypes = {};
 
 export default withFethItemById(ItemDescription);
-

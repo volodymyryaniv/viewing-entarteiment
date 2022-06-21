@@ -1,7 +1,7 @@
 import React from 'react';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
-import { updateRating } from '../../client-api/updateData-api';
+import { updateRating,updateFeedbacks } from '../../client-api/updateData-api';
 import { fetchOneItemStores, successOneItemAction  } from '../../redux/actions/bookStoreActions';
 import { useLocation } from 'react-router-dom';
 
@@ -17,8 +17,16 @@ const withFetchById = (WrappedComponent) => {
       const updatedItem = await updateRating(e.target.value, pathWithId);
       successOneItemAction(updatedItem.data);
     };
+    
+    const addFeedback = async (value) => {
+      const updatedItem = await updateFeedbacks(
+        { date: new Date(), content: value },
+        pathWithId
+      );
+      successOneItemAction(updatedItem.data);
+    };
 
-    return <WrappedComponent shop={shop} addEstimate={addEstimate} />;
+    return <WrappedComponent shop={shop} addEstimate={addEstimate} addFeedback={addFeedback}/>;
   };
 };
 

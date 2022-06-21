@@ -1,3 +1,31 @@
-.FeedbackPage {
-   text-align: left;
+.feedbackPage {
+	text-align: left;
+	.form{
+		 display: flex;
+		 flex-direction: column;
+		 textarea{
+			width: 100%;
+			border: none;
+			&:focus{
+				border-color: rgb(218, 172, 88);
+			}
+		 }
+		 button{
+				color: white;
+				font-size: 0.9rem;
+				font-weight: 700;
+				width: 120px;
+				background-color: rgb(218, 172, 88);
+				border: 2px solid rgba(255, 255, 255, 0.7);
+				border-radius: 5px;
+				margin-top: 10px;
+				padding: 10px;
+				cursor: pointer;
+				align-self: flex-end;
+				&:hover{
+					 transition-duration: 1s;
+					 background-color: rgb(216, 148, 22);
+				}
+		 }
+	}
 }

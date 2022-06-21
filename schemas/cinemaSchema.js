@@ -31,6 +31,9 @@ const cinemaSchema = new mongoose.Schema({
   },
   feedback: {
     type: Array,
+    id:{
+      type: String,
+    },
     date: {
       type: Date
     },
@@ -38,8 +41,10 @@ const cinemaSchema = new mongoose.Schema({
       type: String,
       required: true
     }
+  },
+  estimations: {
+    type: Array,
   }
 })
 
 export default mongoose.model('Cinemas', cinemaSchema);
-

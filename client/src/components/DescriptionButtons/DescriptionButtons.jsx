@@ -11,7 +11,7 @@ const DescriptionButtons = ({ showFeedback}) => {
   };
   return (
     <>
-      <div className={styles.DescriptionButtons}>
+      <div className={styles.descriptionButtons}>
         <button onClick={goBack}>Go back</button>
         <button onClick={showFeedback}>Feedbacks</button>
         <button>Edit</button>

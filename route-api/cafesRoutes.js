@@ -1,5 +1,7 @@
 import express from 'express';
 import Cafes from '../schemas/cafeSchema.js';
+import postRating from './functions/postRating.js';
+import postFeedback from './functions/postFeedback.js';
 const cafesRouter = express.Router();
 
 cafesRouter.get('/attractions/cafes', async (req,res) => {
@@ -11,20 +13,13 @@ cafesRouter.get('/attractions/cafes/:id',async (req,res) => {
    res.send(data);
 })
 cafesRouter.post("/attractions/cafes/:id", async (req, res) => {
-   const { estimations } = await Cafes.findById(req.params.id);
-   const rating =
-     estimations.reduce(
-       (accum, number) => accum + number,
-       Number(req.body.estimate)
-     ) /
-     (estimations.length + 1);
-   const cafe = await Cafes.findByIdAndUpdate(
-     req.params.id,
-     { $push: { estimations: Number(req.body.estimate) }, rating: rating },
-     { new: true }
-   );
+   const cafe = await postRating(Cafes, req.params.id, req.body.estimate);
    res.send(cafe);
  });
+cafesRouter.post("/attractions/cafes/:id/addfeedback", async (req, res) => {
+   const item = await postFeedback(Cafes, req.params.id, req.body);
+   res.send(item);
+});
  
 
 export default cafesRouter;
