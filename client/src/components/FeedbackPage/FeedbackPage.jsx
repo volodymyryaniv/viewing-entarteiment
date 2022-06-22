@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './FeedbackPage.module.scss';
 
-const FeedbackPage = ({ feedbacks, addFeedback}) => {
+const FeedbackPage = ({ feedbacks, addFeedback, deleteFeedback}) => {
   const [value, setValue] = React.useState('');
 
   const onAddFeedback = (e) => {
@@ -10,21 +10,31 @@ const FeedbackPage = ({ feedbacks, addFeedback}) => {
     addFeedback(value)
     setValue('');
   }
+  
+  const onDeleteFeedback = (id) => {
+    deleteFeedback(id);
+  }
 
   return (
     <div className={styles.feedbackPage} data-testid="FeedbackPage">
-      {feedbacks.length &&
-        feedbacks.map((el) => {
+      {feedbacks.length ?
+        (feedbacks.map((el) => {
           const date = el.date.split('T')[0];
           return (
             <div key={el.date}>
-              <p>{el.content}</p>
-              <p>{date}</p>
+              <div className={styles.content}>
+                {el.content}
+                <img src='/public-img/icons/removecross.svg' onClick={() => onDeleteFeedback(el.id)}/>
+              </div>
+              <p className={styles.date}>{date}</p>
             </div>
           );
-        })}
+        })
+        ) : (
+          <p>You can be first!</p>
+        )}
         <form className={styles.form} onSubmit={onAddFeedback}>
-          <label> Leave your comment
+          <label> Your feedback makes us better
             <textarea
               rows={5} 
               placeholder='Type here...'

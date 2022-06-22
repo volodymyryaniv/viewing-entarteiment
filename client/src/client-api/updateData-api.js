@@ -10,7 +10,7 @@ export const updateRating = async (value, path) => {
 }
 
 export const updateFeedbacks = async (value, path) => {
-  const data = await axios.post(`${host}${path}/addfeedback`, {
+  const data = await axios.post(`${host}${path}/feedback`, {
     id: v4(),
     ...value,
   })

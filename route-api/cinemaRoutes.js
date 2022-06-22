@@ -2,6 +2,7 @@ import express from 'express';
 import Cinemas from '../schemas/cinemaSchema.js';
 import postRating from './functions/postRating.js';
 import postFeedback from './functions/postFeedback.js';
+import deleteFeedback from './functions/deleteFeedback.js';
 const cinemasRouter = express.Router();
 
 cinemasRouter.get('/attractions/cinemas', async (req,res) => {
@@ -19,8 +20,13 @@ cinemasRouter.post("/attractions/cinemas/:id", async (req, res) => {
   res.send(cinema);
 });
 
-cinemasRouter.post("/attractions/cinemas/:id/addfeedback", async (req, res) => {
+cinemasRouter.post("/attractions/cinemas/:id/feedback", async (req, res) => {
   const item = await postFeedback(Cinemas, req.params.id, req.body);
+  res.send(item);
+});
+
+cinemasRouter.delete("/attractions/cinemas/:id/feedback", async (req, res) => {
+  const item = await deleteFeedback(Cinemas, req.params.id, req.body.id);
   res.send(item);
 });
 

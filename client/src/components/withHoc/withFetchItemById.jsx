@@ -1,8 +1,9 @@
 import React from 'react';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
-import { updateRating,updateFeedbacks } from '../../client-api/updateData-api';
-import { fetchOneItemStores, successOneItemAction  } from '../../redux/actions/bookStoreActions';
+import { updateRating, updateFeedbacks } from '../../client-api/updateData-api';
+import { removeFeedback } from '../../client-api/deleteData';
+import { fetchOneItemStores, successOneItemAction,  } from '../../redux/actions/bookStoreActions';
 import { useLocation } from 'react-router-dom';
 
 const withFetchById = (WrappedComponent) => {
@@ -17,7 +18,7 @@ const withFetchById = (WrappedComponent) => {
       const updatedItem = await updateRating(e.target.value, pathWithId);
       successOneItemAction(updatedItem.data);
     };
-    
+
     const addFeedback = async (value) => {
       const updatedItem = await updateFeedbacks(
         { date: new Date(), content: value },
@@ -26,7 +27,19 @@ const withFetchById = (WrappedComponent) => {
       successOneItemAction(updatedItem.data);
     };
 
-    return <WrappedComponent shop={shop} addEstimate={addEstimate} addFeedback={addFeedback}/>;
+    const deleteFeedback = async (id) => {
+      const updatedItem = await removeFeedback(pathWithId, id);
+      successOneItemAction(updatedItem.data);
+    };
+
+    return (
+      <WrappedComponent
+        shop={shop}
+        addEstimate={addEstimate}
+        addFeedback={addFeedback}
+        deleteFeedback={deleteFeedback}
+      />
+    );
   };
 };
 
