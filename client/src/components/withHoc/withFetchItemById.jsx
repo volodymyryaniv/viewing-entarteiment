@@ -2,8 +2,9 @@ import React from 'react';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { updateRating, updateFeedbacks } from '../../client-api/updateData-api';
-import { removeFeedback } from '../../client-api/deleteData';
-import { fetchOneItemStores, successOneItemAction,  } from '../../redux/actions/bookStoreActions';
+import { removeFeedback } from '../../client-api/deleteData-api';
+import { getItemById } from '../../client-api/getData-api';
+import { fetchOneItemStores } from '../../redux/actions/productsActions';
 import { useLocation } from 'react-router-dom';
 
 const withFetchById = (WrappedComponent) => {
@@ -11,25 +12,22 @@ const withFetchById = (WrappedComponent) => {
     const pathWithId = useLocation().pathname;
 
     React.useEffect(() => {
-      fetchOneItemStores(pathWithId);
+      fetchOneItemStores(getItemById,pathWithId);
     }, []);
 
-    const addEstimate = async (e) => {
-      const updatedItem = await updateRating(e.target.value, pathWithId);
-      successOneItemAction(updatedItem.data);
+    const addEstimate = (e) => {
+      fetchOneItemStores(updateRating,pathWithId, e.target.value);
     };
 
-    const addFeedback = async (value) => {
-      const updatedItem = await updateFeedbacks(
-        { date: new Date(), content: value },
-        pathWithId
-      );
-      successOneItemAction(updatedItem.data);
+    const addFeedback = (value) => {
+      fetchOneItemStores(updateFeedbacks, pathWithId, {
+        date: new Date(),
+        content: value,
+      });
     };
 
     const deleteFeedback = async (id) => {
-      const updatedItem = await removeFeedback(pathWithId, id);
-      successOneItemAction(updatedItem.data);
+      fetchOneItemStores(removeFeedback,pathWithId, id);
     };
 
     return (
@@ -51,7 +49,6 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = {
   fetchOneItemStores,
-  successOneItemAction,
 }
 
 const withFethItemById = compose(

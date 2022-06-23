@@ -1,25 +1,20 @@
-.mainBackground {
-  background: #348cb2 url('../../img/background/mainBg.jpeg') center;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: -1;
+@import '../../styles/variables.scss';
+
+.wrapper{
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
   .title{
     font-size: calc(10px + 12vmin);
     line-height: 0.9;
-    color: white;
+    color: $lightestText;
   }
   .link{
-    background-color: rgba(71, 70, 69,0.8);
+    background-color: $showTopBg;
     border-radius: 50%;
     text-decoration: none;
-    color: white;
+    text-align: center;
+    color: $lightestText;
     font-size: 2em;
     font-weight: 700;
     width: 150px;

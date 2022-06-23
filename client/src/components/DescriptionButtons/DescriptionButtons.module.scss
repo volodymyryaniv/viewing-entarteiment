@@ -1,21 +1,23 @@
+@import '../../styles/variables.scss';
+
 .descriptionButtons {
    display: grid;
    grid-template-columns: auto 1fr auto;
    margin: 10px auto 10px;
    button{
-      color: white;
+      color: $lightestText;
       font-size: 0.9rem;
       font-weight: 700;
       width: 120px;
-      background-color: rgb(218, 172, 88);
-      border: 2px solid rgba(255, 255, 255, 0.7);
+      background-color: $descriptionBtn;
+      border: 2px solid $lightestText;
       border-radius: 5px;
       margin-right: 5px;
       padding: 10px;
       cursor: pointer;
       &:hover{
          transition-duration: 1s;
-         background-color: rgb(216, 148, 22);
+         background-color: $descriptionBtnHover;
       }
    }  
 }

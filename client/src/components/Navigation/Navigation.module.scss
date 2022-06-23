@@ -1,3 +1,5 @@
+@import '../../styles/variables.scss';
+
 .Navigation {
    display: flex;
    justify-content: space-between;
@@ -7,16 +9,16 @@
    .logo {
       max-width: 80px;
       margin-top: 10px;
-      border: 3px solid bisque;
+      border: 3px solid $navLogoBorder;
       border-radius: 50%;
    }
    .links{
-      color: rgb(153, 143, 143);
+      color: $navLink;
       text-decoration: none;
       padding: 10px;
    }
    .active {
-      color: Black;
+      color: $navLinkActive;
       text-decoration: none;
       padding: 10px;
    }

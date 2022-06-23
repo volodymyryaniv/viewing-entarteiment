@@ -1,6 +1,8 @@
+@import '../../styles/variables.scss';
+
 %positionWrapper {
   position: relative;
-  background-color: rgba(66, 148, 121, 0.5);
+  background-color: $attractionsBg;
   width: 80%;
   height: max-content;
   margin-top: 125px;
@@ -10,7 +12,7 @@
 }
 
 %title{
-  color: white;
+  color: $lightestText;
   font-size: 4rem;
   width: 20%;
 }

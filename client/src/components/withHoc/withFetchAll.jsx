@@ -1,7 +1,7 @@
 import React from 'react';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
-import { fetchAllItems } from '../../redux/actions/bookStoreActions';
+import { fetchAllItems } from '../../redux/actions/productsActions';
 import { useLocation } from 'react-router-dom';
 
 const withFetchAll = (WrappedComponent) => {

@@ -7,6 +7,9 @@ const routes = {
    dynamicParam: ':id',
    cafesPage: 'cafes',
    cinemasPage: 'cinemas',
-   contactsPage: 'contacts'
+   contactsPage: 'contacts',
+   authPage: 'authorization',
+   singInPage: 'singin',
+   singUpPage: 'singup',
 }
 export default routes;

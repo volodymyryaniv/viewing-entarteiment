@@ -1,0 +1,25 @@
+@import '../../../styles/variables.scss';
+
+.container{
+  width: 100%;
+  text-align: center;
+  .title{
+    color: $lightestText;
+  }
+  .link{
+    display: block;
+    color: $lightestText;
+    background-color: $authButton;
+    text-transform: capitalize;
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin: 30px;
+    padding: 30px;
+    transition: 0.5s;
+    &:hover {
+      background-color: $authButtonHover;
+      transition: 1s;
+    }
+  }
+}

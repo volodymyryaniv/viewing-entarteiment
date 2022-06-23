@@ -1,16 +1,14 @@
+@import '../styles/variables.scss';
+
 .container{
-  background-color: rgb(224, 217, 217);
+  background-color: $navbarBg;
   width: 100%;
-  .App {
-    margin: 0 auto;
-    padding: 0 10px;
-    text-align: center;
-    width: 80%;
-  }
 }
-
-
-
+.App {
+  margin: 0 auto;
+  padding: 0 10px;
+  width: 80%;
+}
 
 // @media (prefers-reduced-motion: no-preference) {
 //   .App-logo {

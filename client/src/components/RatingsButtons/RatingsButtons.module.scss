@@ -1,3 +1,13 @@
+@import '../../styles/variables.scss';
+
+%absolute {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+
 .container{
   display: flex;
   justify-content: flex-start;
@@ -10,27 +20,20 @@
     &::before{
       content: '★★★★★';
       display: block;
-      color: rgb(255, 255, 255);
+      color: $lightestText;
     }
     .ratingActive{
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 80%;
-      height: 100%;
+      @extend %absolute;
+      width: 0%;
       overflow: hidden;
       &::before{
         content: '★★★★★';
-        color: rgb(255, 251, 43);
+        color: $ratingScale;
       }
     }
     .ratingItems{
       display: flex;
-      position: absolute;
-      top: 0;
-      left: 0;
-      height: 100%;
-      width: 100%;
+      @extend %absolute;
       .label {
         flex: 1 1 20%;
         position: relative;
@@ -38,18 +41,14 @@
         height: 100%;
         &:hover{
           opacity: 1;
-          color: rgb(163, 140, 35);
+          color: $ratingHover;
         }
         &:checked{
-          color: rgb(36, 31, 8);
+          color: $ratingHover;
         }
         .ratingItem {
+          @extend %absolute;
           opacity: 0;
-          position: absolute;
-          top: 0;
-          left: 0;
-          height: 100%;
-          width: 100%;
           margin: 0;
         }
       }
