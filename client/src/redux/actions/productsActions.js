@@ -1,4 +1,4 @@
-import { getList,getItemById } from '../../client-api/getData-api.js';
+import { getList } from '../../client-api/getData-api.js';
 import types from '../consts.js';
 
 const startAllItemsAction = () => {

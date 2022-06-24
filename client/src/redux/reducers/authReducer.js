@@ -1,0 +1,39 @@
+import types from '../consts.js';
+
+const initialState = {
+  user: {
+    name: '',
+    email: '',
+    loading: false,
+  },
+  token: null,
+  error: null
+}
+
+export const authReducer = (state = initialState, {type, payload}) => {
+  switch (type) {
+    case types.getStarUser: {
+      return {
+        ...state,
+        loading: true,
+      }
+    }
+    case types.getSuccessUser: {
+      return {
+        ...state,
+        user: payload.user,
+        token: payload.token,
+        loading: false
+      }
+    }
+    case types.getFailUser: {
+      return {
+        ...state,
+        loading: false,
+        error: payload.error,
+      }
+    }
+    default: 
+      return state;
+  }
+}
