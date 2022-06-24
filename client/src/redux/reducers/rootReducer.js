@@ -1,9 +1,10 @@
-import {combineReducers} from 'redux';
-import {bookStoresAllReducer,bookStoresOneReducer} from './bookStoreReducers.js'
+import { combineReducers } from 'redux';
+import { listReducer } from './listReducer.js';
+import { itemReducer } from './itemReducer.js'
 
 const rootReducer = combineReducers({
-  bookStoresAllReducer,
-  bookStoresOneReducer
+  listReducer,
+  itemReducer
 })
 
 export default rootReducer;

@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import styles from './SingUpComponent.module.scss';
 
 const SingUpComponent = () => {
+  const { authPage, singInPage } = routes;
   return (
     <>
       <form>
@@ -43,7 +44,7 @@ const SingUpComponent = () => {
           <span>Need help?</span>
         </div>
         <div className={styles.linkText}>But if you already have an account
-        <NavLink to={`${routes.singInPage}`} className={styles.link}>sing in</NavLink>
+        <NavLink to={`/${authPage}/${singInPage}`} className={styles.link}>sing in</NavLink>
         </div>
       </form>
     </>

@@ -22,4 +22,19 @@
       transition: 1s;
     }
   }
+  .lineContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 30px;
+    .line{
+      background-color: $secondaryText;
+      width: 100%;
+      height: 2px;
+    }
+    span{
+      color: $lightestText;
+      padding: 10px;
+    }
+  }
 }

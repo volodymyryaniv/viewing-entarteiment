@@ -18,7 +18,7 @@ const withFetchAll = (WrappedComponent) => {
 
 const mapStateToProps = (state) => {
   return {
-    list: state.bookStoresAllReducer.list,
+    list: state.listReducer.list,
   };
 };
 

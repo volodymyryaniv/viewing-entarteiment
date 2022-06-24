@@ -43,7 +43,7 @@ const withFetchById = (WrappedComponent) => {
 
 const mapStateToProps = state => {
     return {
-      shop: state.bookStoresOneReducer.element,
+      shop: state.itemReducer.element,
     }
   }
 

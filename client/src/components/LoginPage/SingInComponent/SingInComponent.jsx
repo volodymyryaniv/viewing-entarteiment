@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import styles from './SingInComponent.module.scss';
 
 const SingInComponent = () => {
+  const { authPage, singUpPage } = routes;
   return (
     <>
       <form>
@@ -29,7 +30,7 @@ const SingInComponent = () => {
         </div>
         <div className={styles.linkText}>
           But if you still don`t have an account
-          <NavLink to={routes.singInPage} className={styles.link}>
+          <NavLink to={`/${authPage}/${singUpPage}`} className={styles.link}>
             sing up
           </NavLink>
         </div>
