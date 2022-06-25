@@ -20,6 +20,9 @@ const Navigation = () => {
             </NavLink>
           );
         })}
+        <NavLink to={routes.authPage} className={name}>
+          Sing in
+        </NavLink>
       </div>
     </nav>
   );

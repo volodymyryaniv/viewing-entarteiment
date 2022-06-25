@@ -15,6 +15,8 @@ import SingInComponent from './LoginPage/SingInComponent';
 import SingUpComponent from './LoginPage/SingUpComponent';
 import TopPlaces from './TopPlaces';
 import { Routes, Route } from 'react-router-dom';
+import PrivateRoute from './PrivateRoute';
+import PublicRoute from './PublicRoute';
 import routes from '../consts/routes.js';
 import styles from './App.module.scss';
 
@@ -44,10 +46,12 @@ function App() {
         <Routes>
           <Route path={`${homePage}*`} element={<MainPage />}>
             <Route index element={<HomePage />} />
-            <Route path={`${authPage}/*`} element={<LoginPage />}>
-              <Route index element={<AuthTypeComponent />} />
-              <Route path={singInPage} element={<SingInComponent />} />
-              <Route path={singUpPage} element={<SingUpComponent />} />
+            <Route element={<PublicRoute />}>
+              <Route path={`${authPage}/*`} element={<LoginPage />}>
+                <Route index element={<AuthTypeComponent />} />
+                <Route path={singInPage} element={<SingInComponent />} />
+                <Route path={singUpPage} element={<SingUpComponent />} />
+              </Route>
             </Route>
           </Route>
           <Route path={topPage} element={<TopPlaces />} />
