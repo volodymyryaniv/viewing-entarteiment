@@ -1,5 +1,5 @@
 import React from 'react';
-import {NavLink, Outlet, Link} from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import routes from '../../consts/routes.js';
 import PropTypes from 'prop-types';
 import styles from './HomePage.module.scss';

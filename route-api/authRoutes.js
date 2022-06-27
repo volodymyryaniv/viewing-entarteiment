@@ -4,21 +4,21 @@ import singUpUser from './functions/singUpUser.js';
 import singInUser from './functions/singInUser.js';
 const authRouter = express.Router();
 
-authRouter.post('/authorization/singup', async(req, res) => {
+authRouter.post('/authorization/singup', async(req, res, next) => {
   try {
     const newUser = await singUpUser({...req.body});
     res.send(newUser);
   } catch (err) {
-    res.sendStatus(400).json({message: err.message});
+    return next(err);
   }
 });
 
-authRouter.post('/authorization/singin', async(req, res) => {
+authRouter.post('/authorization/singin', async(req, res, next) => {
   try {
     const user = await singInUser({...req.body});
     res.send(user);
   } catch (err) {
-    res.sendStatus(400).json({message: err.message});
+    return next(err);
   }
 });
 

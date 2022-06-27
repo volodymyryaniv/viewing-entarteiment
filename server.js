@@ -23,11 +23,13 @@ app.use('*', (req,res,next) => {
   res.setHeader('Access-Control-Allow-Methods', 'DELETE');
   next();
 })
-app.use(authRouter);
 app.use(historyRouter);
 app.use(bookStoresRouter);
 app.use(cafesRouter);
 app.use(cinemasRouter);
-
+app.use(authRouter);
+app.use((error,req,res,next) => {
+  res.status(400).json({message: error.message})
+})
 
 app.listen(PORT, () => console.log(`Server has been started on port ${PORT}`))

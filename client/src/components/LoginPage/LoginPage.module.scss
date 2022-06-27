@@ -6,11 +6,9 @@
   background-color: $authPageBg;
   overflow: auto;
   .container{
-    max-width: 350px;
-    margin: 160px auto 50px;
+    max-width: 450px;
+    margin: 150px auto 50px;
     padding: 50px;
     background-color: $formContainerColor;
-    display: flex;
-    justify-content: center;
   }
 }

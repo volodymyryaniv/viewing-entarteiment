@@ -25,14 +25,18 @@ export const authReducer = (state = initialState, { type, payload }) => {
         user: payload.user,
         token: payload.token,
         loading: false,
+        error: null,
       };
     }
     case types.getFailUser: {
       return {
         ...state,
         loading: false,
-        error: payload.error,
+        error: payload,
       };
+    }
+    case types.resetToken: {
+      return initialState;
     }
     default:
       return state;

@@ -12,6 +12,8 @@ const getStarUser = 'GET_START_USER';
 const getSuccessUser = 'GET_SUCCESS_USER';
 const getFailUser = 'GET_FAILURE_USER';
 
+const resetToken = 'RESET_TOKEN';
+
 const types =  {
   getStarAll,
   getSuccessAll,
@@ -21,7 +23,8 @@ const types =  {
   getFailOne,
   getStarUser,
   getSuccessUser,
-  getFailUser
+  getFailUser,
+  resetToken
 }
 
 export default types;

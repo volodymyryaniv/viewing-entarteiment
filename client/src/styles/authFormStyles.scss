@@ -14,16 +14,34 @@ form {
     color: $lightestText;
     text-align: left;
     text-transform: capitalize;
+    margin-bottom: 5px;
+  }
+  .inputContainer{
+    position: relative;
+    max-height: 63px;
   }
   .input{
     @extend %formElements;
     box-sizing: border-box;
-    margin-bottom: 20px;
+    margin-top: 20px;
+    margin-bottom: 5px;
     background-color: $authInputBg;
     &:focus{
       background-color: $authInputBgFocus;
       border-style: none;
     }
+  }
+  .passwordVisibility{
+    width: 25px;
+    color: rgb(201, 172, 172);
+    position: absolute;
+    right: 0;
+    top: 25px;
+  }
+  .warning {
+    color:$authButton;
+    font-size: 0.8rem;
+    margin: 0;
   }
   .button{
     @extend %formElements;

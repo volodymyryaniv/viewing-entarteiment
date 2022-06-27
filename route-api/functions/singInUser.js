@@ -1,7 +1,6 @@
 import 'dotenv/config';
 import bcrypt from 'bcrypt';
 import User from '../../schemas/userSchema.js';
-import Role from '../../schemas/userRoleSchema.js';
 import signToken from './signToken.js';
 
 export default async function singInUser({ email, password }) {

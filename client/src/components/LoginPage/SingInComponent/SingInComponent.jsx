@@ -3,53 +3,61 @@ import { connect } from 'react-redux';
 import routes from '../../../consts/routes';
 import { NavLink } from 'react-router-dom';
 import { authUser } from '../../../redux/actions/authActions';
+import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { singInValidator } from '../../../validatorsSchema/singInValidator';
 import PropTypes from 'prop-types';
 import styles from './SingInComponent.module.scss';
 
 const SingInComponent = ({ authUser }) => {
+  const [showPs, setShowPs] = React.useState(false);
   const { authPage, singUpPage } = routes;
-  const [user, setUser] = React.useState({
-    email: '',
-    password: '',
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(singInValidator),
   });
 
-  const onSetForm = (e) => {
-    setUser({
-      ...user,
-      [e.target.name]: e.target.value
-    })
-  }
-
-  const onSubmitData = (e) => {
-    e.preventDefault();
-    authUser(user);
-    setUser({
-      email: '',
-      password: '',
-    })
-  }
+  const onSubmitData = async (data) => {
+    authUser(data);
+  };
 
   return (
     <>
-      <form onSubmit={onSubmitData}>
+      <form onSubmit={handleSubmit(onSubmitData)}>
         <h2>Sing in</h2>
         <input
           className={styles.input}
           type="email"
           placeholder="Enter email"
-          name='email'
-          value={user.email}
-          onChange={onSetForm}
+          {...register('email')}
         />
-        <input
-          className={styles.input}
-          type="password"
-          placeholder="Enter password"
-          name='password'
-          value={user.password}
-          onChange={onSetForm}
-        />
-        <button type="submit" className={styles.button}>Sing in</button>
+        {errors.email && (
+          <p className={styles.warning}>{errors.email?.message}</p>
+        )}
+        <div className={styles.inputContainer}>
+          <input
+            className={styles.input}
+            type={`${showPs ? 'text' : 'password'}`}
+            placeholder="Enter password"
+            {...register('password')}
+          />
+          <img
+            className={styles.passwordVisibility}
+            src={`/public-img/icons/${showPs ? 'hide' : 'show'}-password.svg`}
+            alt="pasword visibility"
+            onClick={() => setShowPs(!showPs)}
+          />
+          ;
+        </div>
+        {errors.password && (
+          <p className={styles.warning}>{errors.password?.message}</p>
+        )}
+        <button type="submit" className={styles.button}>
+          Sing in
+        </button>
         <div className={styles.checkboxContainer}>
           <label>
             <input type="checkbox" />
@@ -67,6 +75,7 @@ const SingInComponent = ({ authUser }) => {
     </>
   );
 };
+
 
 SingInComponent.propTypes = {};
 

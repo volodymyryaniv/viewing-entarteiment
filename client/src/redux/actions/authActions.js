@@ -8,7 +8,6 @@ const getStartUser = () => {
 }
 
 const getSuccessUser = (payload) => {
-  console.log(payload);
   return {
     type: types.getSuccessUser,
     payload: payload
@@ -18,7 +17,13 @@ const getSuccessUser = (payload) => {
 const getFailUser = (error) => {
   return {
     type: types.getFailUser,
-    error
+    payload: error
+  }
+}
+
+export const resetToken = () => {
+  return {
+    type: types.resetToken
   }
 }
 
@@ -38,6 +43,6 @@ export const authUser = (userData) => async (dispatch) => {
     const user = await loginUser(userData);
     dispatch(getSuccessUser(user.data));
   } catch (err) {
-    dispatch(getFailUser(err.message));
+    dispatch(getFailUser(err.response.data.message));
   }
 }

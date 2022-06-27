@@ -1,0 +1,37 @@
+@import '../../styles/variables.scss';
+
+.container {
+  display: inline-block;
+  position: relative;
+  .label{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $navLink;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 3px solid $navLogoBorder;
+    font-weight: 900;
+  }
+  .menu {
+    position: absolute;
+    top: 100px;
+    right: 0;
+    width: 200px;
+    background-color: $navLink;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    .item{
+      font-size: 1rem;
+      margin: 5px;
+      &:hover{
+        cursor: pointer;
+        margin-bottom: 4px;
+        border-bottom: 1px solid $navLogoBorder;
+      }
+    }
+  }
+}
