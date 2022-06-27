@@ -1,29 +1,22 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import routes from '../../../consts/routes';
 import { NavLink } from 'react-router-dom';
 import { addNewUser } from '../../../redux/actions/authActions';
-import { useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
 import { singUpValidator } from '../../../validatorsSchema/singUpValidator';
 import PropTypes from 'prop-types';
 import styles from './SingUpComponent.module.scss';
+import withFormValidation from '../../withHoc/withFormValidation';
 
-const SingUpComponent = ({ addNewUser }) => {
+const SingUpComponent = ({
+  isLoading,
+  handleSubmit,
+  onSubmitData,
+  errors,
+  register,
+  authPage,
+  singInPage,
+}) => {
   const [showPs, setShowPs] = React.useState(false);
   const [showConfirm, setShowConfirm] = React.useState(false);
-  const { authPage, singInPage } = routes;
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm({
-    resolver: yupResolver(singUpValidator),
-  });
-
-  const onSubmitData = (data) => {
-    addNewUser(data);
-  };
 
   return (
     <>
@@ -94,7 +87,7 @@ const SingUpComponent = ({ addNewUser }) => {
         {errors.phone && (
           <p className={styles.warning}>{errors.phone?.message}</p>
         )}
-        <button type="submit" className={styles.button}>
+        <button type="submit" className={styles.button} disabled={isLoading}>
           Sing up
         </button>
         <div className={styles.checkboxContainer}>
@@ -119,4 +112,4 @@ SingUpComponent.propTypes = {};
 
 SingUpComponent.defaultProps = {};
 
-export default connect(null, {addNewUser})(SingUpComponent);
+export default withFormValidation(SingUpComponent,addNewUser,singUpValidator);

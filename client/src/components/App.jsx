@@ -1,3 +1,5 @@
+import React from 'react';
+import { useDispatch } from 'react-redux';
 import AuthTypeComponent from './LoginPage/AuthTypeComponent';
 import BookStores from './EntarteimentPage/BookStores';
 import Cafes from './EntarteimentPage/Cafes';
@@ -18,6 +20,7 @@ import { Routes, Route } from 'react-router-dom';
 import PrivateRoute from './PrivateRoute';
 import PublicRoute from './PublicRoute';
 import routes from '../consts/routes.js';
+import { getUser } from '../redux/actions/authActions';
 import styles from './App.module.scss';
 
 function App() {
@@ -35,6 +38,14 @@ function App() {
     singInPage,
     singUpPage,
   } = routes;
+  const dispatch = useDispatch();
+
+  React.useEffect(() => {
+    if (localStorage.getItem('accessToken') ) {
+      dispatch(getUser());
+    }
+  },[])
+
   return (
     <div>
       <div className={styles.container}>
@@ -46,6 +57,7 @@ function App() {
         <Routes>
           <Route path={`${homePage}*`} element={<MainPage />}>
             <Route index element={<HomePage />} />
+            <Route path={contactsPage} element={<ContactsPage />} />
             <Route element={<PublicRoute />}>
               <Route path={`${authPage}/*`} element={<LoginPage />}>
                 <Route index element={<AuthTypeComponent />} />
@@ -65,7 +77,6 @@ function App() {
             <Route path={cinemasPage} element={<Cinemas />} />
             <Route path={`${cinemasPage}/${dynamicParam}`} element={<ItemDescription />} />
           </Route>
-          <Route path={contactsPage} element={<ContactsPage />} />
         </Routes>
       </main>
     </div>

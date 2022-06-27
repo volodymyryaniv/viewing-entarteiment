@@ -2,7 +2,7 @@ import * as Yup from 'yup';
 
 export const singUpValidator = Yup.object({
   name: Yup.string()
-    .required('Email is required')
+    .required('Name is required')
     .test('name', 'Please enter full name', (value) => {
       return value.trim().split(' ').length >= 2;
     }),

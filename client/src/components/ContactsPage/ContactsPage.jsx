@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styles from './ContactsPage.module.scss';
 
 const ContactsPage = () => (
-  <div className={styles.ContactsPage} data-testid="ContactsPage">
+  <div className={styles.contactsPage} data-testid="ContactsPage">
     ContactsPage Component
   </div>
 );

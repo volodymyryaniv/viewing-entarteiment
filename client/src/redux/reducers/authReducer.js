@@ -19,7 +19,7 @@ export const authReducer = (state = initialState, { type, payload }) => {
         loading: true,
       };
     }
-    case types.getSuccessUser: {
+    case types.succesAuthUser: {
       return {
         ...state,
         user: payload.user,
@@ -28,7 +28,23 @@ export const authReducer = (state = initialState, { type, payload }) => {
         error: null,
       };
     }
-    case types.getFailUser: {
+    case types.failAuthUser: {
+      return {
+        ...state,
+        loading: false,
+        error: payload,
+      };
+    }
+    case types.successCurrentUser: {
+      return {
+        ...state,
+        user: payload.user,
+        token: payload.token,
+        loading: false,
+        error: null,
+      };
+    }
+    case types.failCurrentUser: {
       return {
         ...state,
         loading: false,

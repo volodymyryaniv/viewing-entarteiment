@@ -8,3 +8,7 @@ export const registerUser = async (userData) => {
 export const loginUser = async (userData) => {
   return await axios.post(`/authorization/singin`, userData);
 };
+
+export const getCurrentUser = async (token) => {
+  return await axios.post(`/authorization/singin/current`, { token });
+};

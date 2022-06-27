@@ -1,22 +1,42 @@
 import types from '../consts.js';
-import { registerUser,loginUser  } from '../../client-api/authUser-api';
+import { registerUser,loginUser, getCurrentUser  } from '../../client-api/authUser-api';
 
-const getStartUser = () => {
+const startAuthUser = () => {
   return {
     type: types.getStarUser
   }
 }
 
-const getSuccessUser = (payload) => {
+const succesAuthUser = (payload) => {
   return {
-    type: types.getSuccessUser,
+    type: types.succesAuthUser,
     payload: payload
   }
 }
 
-const getFailUser = (error) => {
+const failAuthUser = (error) => {
   return {
-    type: types.getFailUser,
+    type: types.failAuthUser,
+    payload: error
+  }
+}
+
+const startCurrentUser = () => {
+  return {
+    type: types.startCurrentUser
+  }
+}
+
+const succesCurrentUser = (payload) => {
+  return {
+    type: types.successCurrentUser,
+    payload: payload
+  }
+}
+
+const failCurrentUser = (error) => {
+  return {
+    type: types.failCurrentUser,
     payload: error
   }
 }
@@ -28,21 +48,34 @@ export const resetToken = () => {
 }
 
 export const addNewUser = (userData) => async (dispatch) => {
-  dispatch(getStartUser());
+  dispatch(startAuthUser());
   try {
     const user = await registerUser(userData);
-    dispatch(getSuccessUser(user.data));
+    localStorage.setItem('accessToken', user.data.token);
+    dispatch(succesAuthUser(user.data));
   } catch (err) {
-    dispatch(getFailUser(err.message));
+    dispatch(failAuthUser(err.message));
   }
-}
+};
 
 export const authUser = (userData) => async (dispatch) => {
-  dispatch(getStartUser());
+  dispatch(startAuthUser());
   try {
     const user = await loginUser(userData);
-    dispatch(getSuccessUser(user.data));
+    localStorage.setItem('accessToken', user.data.token);
+    dispatch(succesAuthUser(user.data));
   } catch (err) {
-    dispatch(getFailUser(err.response.data.message));
+    dispatch(failAuthUser(err.response.data.message));
   }
-}
+};
+
+export const getUser = () => async (dispatch) => {
+  dispatch(startCurrentUser());
+  const token = localStorage.getItem('accessToken');
+  try {
+    const user = await getCurrentUser(token);
+    dispatch(succesCurrentUser(user.data));
+  } catch (err) {
+    dispatch(failCurrentUser(err.response.data.message));
+  }
+};

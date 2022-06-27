@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { resetToken } from '../../redux/actions/authActions';
 import styles from './UserProfile.module.scss';
 
-const UserProfile = ({ resetToken }) => {
+const UserProfile = ({ userName,resetToken }) => {
   const [show, setShow] = React.useState(false);
 
   const onShowMenu = () => {
@@ -12,13 +12,19 @@ const UserProfile = ({ resetToken }) => {
   };
 
   const onLogOut = () => {
+    localStorage.removeItem('accessToken');
     resetToken();
   }
 
+  const getLetters = (name) => {
+    return name ? name.split(' ').map(word => word[0].toUpperCase()).slice(0,2).join('') : '';
+  };
+
+  const letters = React.useMemo(() => getLetters(userName));
   return (
     <div className={styles.container} data-testid="UserProfile">
       <div className={styles.label} onClick={onShowMenu}>
-        UP
+        {letters}
       </div>
       {show && <div className={styles.menu}>
         <p className={styles.item} onClick={onLogOut}>Log out</p>
@@ -32,4 +38,8 @@ UserProfile.propTypes = {};
 
 UserProfile.defaultProps = {};
 
-export default connect(null, { resetToken })(UserProfile);
+const mapStateToProps = state => ({
+  userName: state.authReducer.user.name
+});
+
+export default connect(mapStateToProps, { resetToken })(UserProfile);

@@ -1,28 +1,21 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import routes from '../../../consts/routes';
 import { NavLink } from 'react-router-dom';
 import { authUser } from '../../../redux/actions/authActions';
-import { useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
 import { singInValidator } from '../../../validatorsSchema/singInValidator';
 import PropTypes from 'prop-types';
 import styles from './SingInComponent.module.scss';
+import withFormValidation from '../../withHoc/withFormValidation';
 
-const SingInComponent = ({ authUser }) => {
+const SingInComponent = ({
+  isLoading,
+  handleSubmit,
+  onSubmitData,
+  errors,
+  register,
+  authPage,
+  singUpPage
+}) => {
   const [showPs, setShowPs] = React.useState(false);
-  const { authPage, singUpPage } = routes;
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm({
-    resolver: yupResolver(singInValidator),
-  });
-
-  const onSubmitData = async (data) => {
-    authUser(data);
-  };
 
   return (
     <>
@@ -55,7 +48,7 @@ const SingInComponent = ({ authUser }) => {
         {errors.password && (
           <p className={styles.warning}>{errors.password?.message}</p>
         )}
-        <button type="submit" className={styles.button}>
+        <button type="submit" className={styles.button} disabled={isLoading}>
           Sing in
         </button>
         <div className={styles.checkboxContainer}>
@@ -76,9 +69,8 @@ const SingInComponent = ({ authUser }) => {
   );
 };
 
-
 SingInComponent.propTypes = {};
 
 SingInComponent.defaultProps = {};
 
-export default connect(null, {authUser})(SingInComponent);
+export default withFormValidation(SingInComponent, authUser, singInValidator);
