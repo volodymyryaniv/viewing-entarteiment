@@ -16,7 +16,7 @@ const EntarteimentPage = () => {
     <div className={styles.EntarteimentPage}>
       <div className={style}>
         <h1 className={styles.title}>I want to...</h1>
-        <FilterComponent />
+        {style === styles.wrapperList && <FilterComponent />}
         <Outlet />
       </div>
     </div>

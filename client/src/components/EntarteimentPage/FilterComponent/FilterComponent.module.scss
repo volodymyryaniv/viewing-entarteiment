@@ -1,4 +1,107 @@
-.filter{
-  background-color: rgba(80, 64, 64, 0.5);
+@import '../../../styles/variables.scss';
+
+@mixin distancePosition($size,$color,$opacity,$justCont) {
+  position: absolute;
+  top: calc(50% - #{$size}/2);
+  left: calc(50% - #{$size}/2);
+  width: $size;
+  height: $size;
+  border-radius: 50%;
+  margin: 0;
+  background-color: $color;
+  opacity: $opacity;
+  display: flex;
+  justify-content: $justCont;
+  align-items: center;
+}
+
+%input {
+  color: $lightestText;
+  background-color: $authInputBg;
+  width: 100%;
+  margin: 10px 0;
+  font-size: 1rem;
+  padding: 5px;
+  border-style: none;
+  border-radius: 5px;
+}
+
+.filterContainer{
+  background-color: $filterPageBg;
   width: 20%;
+  margin: 180px 10px 10px;
+
+  .filter {
+    height: 100%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    .label{ 
+      color: $lightestText;
+      font-weight: 500;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      .input{
+        @extend %input;
+      }
+      .inputSelect{
+        @extend %input;
+      }
+      .labelRadio{
+        color: $lightestText;
+
+      }
+    }
+    .labelDistance {
+      color: $lightestText;
+      font-weight: 500;
+      .distanceContainer{
+        position: relative;
+        height: 190px;
+        color: $lightestText;
+        font-size: 0.8rem;
+        
+        .large{
+          @include distancePosition(170px,rgb(194, 38, 11),0.4, flex-start);
+          padding: 5px;
+          &:hover, &:hover ~ div {
+            opacity: 0.6;
+          }
+        }
+        .medium{
+          @include distancePosition(120px,rgb(189, 132, 9),0.4, flex-start);
+          padding: 3px;
+          &:hover, &:hover ~ div {
+            opacity: 0.7;
+          }
+        }
+        .small{
+          @include distancePosition(45px,rgb(10, 141, 27),0.4, center);
+          &:hover {
+            opacity: 1;
+          }
+        }
+      }
+      
+    }
+    .acceptButton{
+      color: $lightestText;
+      width: 100%;
+      font-size: 1rem;
+      padding: 10px;
+      border-style: none;
+      border-radius: 5px;
+      background-color: $authButton;
+      text-transform: capitalize;
+      font-weight: 700;
+      margin: 20px 0 10px;
+      transition: 0.5s;
+      &:hover {
+        background-color: $authButtonHover;
+        transition: 1s;
+        cursor: pointer;
+      }
+    }
+  }
 }
