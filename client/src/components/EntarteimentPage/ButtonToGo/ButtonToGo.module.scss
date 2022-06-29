@@ -1,6 +1,8 @@
+@import '../../../styles/variables.scss';
+
 .container {
-  background-color: rgba(68, 43, 43,0.7);
-  border: 2px solid black;
+  background-color: $navBtnBg;
+  border: 2px solid $mainDark;
   margin: 20px;
   padding: 20px;
   display: flex;
@@ -8,7 +10,7 @@
   align-items: center;
   .link{
     box-sizing: border-box;
-    background-color: rgb(71, 60, 60);
+    background-color: $navBtnLinkBg;
     text-decoration: none;
     max-width: 300px;
     color: white;
@@ -19,5 +21,4 @@
       font-weight: 700;
     }
   }
-  
 }

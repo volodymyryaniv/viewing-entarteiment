@@ -1,18 +1,20 @@
+@import '../../../styles/variables.scss';
+
 .shopCard{
   box-sizing: border-box;
-  background-color: rgba(231, 226, 226,0.8);
+  background-color: $itemContBg;
   padding: 20px;
   width: 100%;
   cursor: pointer;
   &:hover{
-    box-shadow: 0px 0px 15px rgb(196, 150, 25) inset;
+    box-shadow: 0px 0px 15px $itemPrimary inset;
   }
   .image{
     display:block;
     width: 60%;
     max-width: 150px;
     margin: 0 auto;
-    border: 2px solid rgb(212, 165, 33);
+    border: 2px solid $itemPrimary;
     border-radius: 5px;
   }
   .textContent{
@@ -21,12 +23,12 @@
     padding: 10px;
     h3{
       text-transform: uppercase;
-      color: rgb(212, 165, 33);
+      color: $itemPrimary;
       text-align: center;
     }
     p{
       font-weight: 700;
-      color: rgb(84, 86, 88);
+      color: $secondaryText;
       line-height: 1;
       margin: 5px 0;
       & span{

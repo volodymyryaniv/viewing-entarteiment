@@ -1,0 +1,92 @@
+@import '../../../../styles/variables.scss';
+
+$maxRadius: '1K';
+$medRadius: '500m';
+$minRadius: '200m';
+
+@mixin hoverEffect ($shadowWidth,$color,$opacity) {
+  opacity: $opacity;
+  box-shadow: 0 0 $shadowWidth $color;
+}
+
+@mixin distancePosition($size,$color,$opacity,$justify) {
+  position: absolute;
+  top: calc(50% - #{$size}/2);
+  left: calc(50% - #{$size}/2);
+  width: $size;
+  height: $size;
+  border-radius: 50%;
+  margin: 0;
+  background-color: $color;
+  opacity: $opacity;
+  display: flex;
+  justify-content: $justify;
+  align-items: center;
+}
+
+.labelDistance {
+  color: $lightestText;
+  font-weight: 500;
+  .distanceContainer{
+    position: relative;
+    height: 190px;
+    color: $lightestText;
+    font-size: 0.8rem;
+    .inputRadioMax{
+      appearance: none;
+      &::before {
+        content: $maxRadius;
+        color: $lightestText;
+        padding: 5px;
+        @include distancePosition(170px,$maxRadiusColor,0.4,flex-start);
+      }
+      &:checked:before {
+        content: $maxRadius;
+        @include hoverEffect(25px,$maxRadiusColor,0.7);
+      }
+      &:hover:before {
+        content: $maxRadius;
+        @include hoverEffect(25px,$maxRadiusColor,0.7);
+      }
+    }
+    .inputRadioMed{
+      appearance: none;
+      &::before {
+        content: $medRadius;
+        color: $lightestText;
+        padding: 5px;
+        @include distancePosition(120px,$medRadiusColor,0.4,flex-start);
+        &:hover ~ input{
+          opacity: 1;
+        }
+      }
+      &:checked:before {
+        content: $medRadius;
+        @include hoverEffect(25px,$medRadiusColor,0.8);
+      }
+      &:hover:before {
+        content: $medRadius;
+        @include hoverEffect(25px,$medRadiusColor,0.8);
+      }
+    }
+    .inputRadioMin{
+      appearance: none;
+      padding: 5px;
+      &::before {
+        content: $minRadius;
+        color: $lightestText;
+        padding: 5px;
+        @include distancePosition(45px,$minRadiusColor,0.4,center);
+      }
+      &:checked:before {
+        content: $minRadius;
+        @include hoverEffect(25px,$minRadiusColor,1);
+      }
+      &:hover:before {
+        content: $minRadius;
+        text-align: center;
+        @include hoverEffect(25px,$minRadiusColor,1);
+      }
+    }
+  }
+}

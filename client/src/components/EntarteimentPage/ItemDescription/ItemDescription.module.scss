@@ -1,10 +1,12 @@
+@import '../../../styles/variables.scss';
+
 .itemDescription {
-  background-color: rgba(122, 110, 110,0.5);
+  background-color: $listBg;
   width: 80%;
   padding: 20px;
   .container {
-    background-color: rgba(236, 225, 225, 0.9);
-    box-shadow: 0px 0px 12px rgb(34, 2, 2);
+    background-color: $itemContBg;
+    box-shadow: 0px 0px 12px $mainDark;
     border-radius: 5px;
     padding: 20px;
     .content{
@@ -13,7 +15,7 @@
       .image{
         display: block;
         width: 45%;
-        border: 2px solid rgba(255, 255, 255, 0.7);
+        border: 2px solid $lightestText;
         border-radius: 5px;
       }
       .textContent{
@@ -22,16 +24,16 @@
         max-width: 55%;
         h1{
           text-transform: uppercase;
-          color: rgb(212, 165, 33);
+          color: $itemPrimary;
           font-size: 2rem;
           line-height: 1;
         }
         p{
           font-weight: 700;
-          color: rgb(84, 86, 88);
+          color: $secondaryText;
           & span{
             font-weight: 400;
-            color: rgb(20, 20, 20);
+            color: $mainDark;
           }
         }
       }

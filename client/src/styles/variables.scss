@@ -1,23 +1,9 @@
 //Gommon colors
-$lightestText: rgba(255, 255, 255, 1);
+$lightestText: rgb(255, 255, 255);
 $showTopBg: rgba(71, 70, 69,0.8);
 $attractionsBg: rgba(66, 148, 121, 0.5);
-
-//Description Buttons colors
-$descriptionBtn: rgb(218, 172, 88);
-$descriptionBtnHover: rgb(216, 148, 22);
-$secondaryText: rgb(94, 86, 86);
-$feedbackItemBg: rgb(245, 241, 236);
-
-//Navbar colors
-$navbarBg: rgb(224, 217, 217);
-$navLogoBorder: rgb(241, 216, 188);
-$navLink: rgb(153, 143, 143);
-$navLinkActive: rgb(14, 13, 13);
-
-//Rating buttons
-$ratingScale: rgb(255, 251, 43);
-$ratingHover: rgb(163, 140, 35);
+$listBg: rgba(122, 110, 110,0.5);
+$mainDark: rgb(14, 13, 13);
 
 //Auth form colors
 $authButton: rgba(221, 47, 47, 0.8);
@@ -27,3 +13,33 @@ $authInputBgFocus: rgba(105, 105, 105, 0.8);
 $authPageBg: rgba(0, 0, 0, 0.6);
 $auxiliaryText: rgba(197, 195, 195, 0.8);
 $formContainerColor: rgba(19, 17, 17, 0.8);
+
+//Description Buttons colors
+$descriptionBtn: rgb(218, 172, 88);
+$descriptionBtnHover: rgb(216, 148, 22);
+$secondaryText: rgb(94, 86, 86);
+$feedbackItemBg: rgb(245, 241, 236);
+
+//EntarteimentP navigation colors
+$navBtnBg: rgba(68, 43, 43,0.7);
+$navBtnLinkBg: rgb(71, 60, 60);
+
+//Item component colors
+$itemPrimary: rgb(212, 165, 33);
+$itemContBg: rgba(236, 225, 225, 0.9);
+
+//Filter component colors
+$filterPageBg: rgba(0, 0, 0, 0.7);
+$maxRadiusColor: rgb(194, 38, 11);
+$medRadiusColor: rgb(189, 132, 9);
+$minRadiusColor: rgb(10, 141, 27);
+
+//Navbar colors
+$navbarBg: rgb(224, 217, 217);
+$navLogoBorder: rgb(241, 216, 188);
+$navLink: rgb(153, 143, 143);
+$navLinkActive: $mainDark;
+
+//Rating buttons
+$ratingScale: rgb(255, 251, 43);
+$ratingHover: rgb(163, 140, 35);

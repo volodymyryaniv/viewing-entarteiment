@@ -1,8 +1,10 @@
+@import '../../../styles/variables.scss';
+
 .container{
   background-color: transparent;
   width: 85%;
   height: 44%;
-  border: 10px solid white;
+  border: 10px solid $lightestText;
   margin: 50px 0 80px 0;
   display: grid;
   grid-template-columns: repeat(3, 1fr);

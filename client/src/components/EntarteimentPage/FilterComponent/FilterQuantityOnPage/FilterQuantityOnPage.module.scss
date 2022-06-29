@@ -1,0 +1,35 @@
+@import '../../../../styles/variables.scss';
+
+.labelRadio{
+  display: flex;
+  &:focus-within{
+    color: $authButton;
+  }
+  .inputRadio{
+    appearance: none;
+    color: $lightestText;
+    width: 15px;
+    height: 15px;
+    margin-right: 10px;
+    background-color: $lightestText;
+    border-radius: 5%;
+    display: grid;
+    place-content: center;
+    &::before {
+      content: "";
+      width: 15px;
+      height: 15px;
+      transform: scale(0);
+      transition: 120ms transform ease-in-out;
+    }
+    &:checked::before {
+      content: "";
+      width: 10px;
+      height: 10px;
+      background-color: $maxRadiusColor;
+      opacity: 1;
+      border-radius: 5%;
+      transform: scale(1);
+    }
+  }
+}
