@@ -16,7 +16,7 @@ const SingInComponent = ({
   singUpPage
 }) => {
   const [showPs, setShowPs] = React.useState(false);
-
+  
   return (
     <>
       <form onSubmit={handleSubmit(onSubmitData)}>

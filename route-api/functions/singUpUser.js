@@ -5,7 +5,6 @@ import Role from '../../schemas/userRoleSchema.js';
 import signToken from './signToken.js';
 
 export default async function singUpUser({ email, password, name, phone }) {
-  console.log({ email, password, name, phone })
   const exist = await User.findOne({ email });
   if (exist) {
     throw new Error(`User with ${email} email already exists`);

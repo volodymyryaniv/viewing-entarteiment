@@ -14,8 +14,8 @@ const withFormValidation = (WrappedComponent, authAction, validator) => {
       resolver: yupResolver(validator),
     });
 
-    const onSubmitData = async (data) => {
-      props.authAction(data);
+    const onSubmitData = (data) => {
+        props.authAction(data);
     };
 
     return (

@@ -1,5 +1,6 @@
 import types from '../consts.js';
 import { registerUser,loginUser, getCurrentUser  } from '../../client-api/authUser-api';
+import { manageToast } from '../../functions/manageToast.js';
 
 const startAuthUser = () => {
   return {
@@ -52,9 +53,17 @@ export const addNewUser = (userData) => async (dispatch) => {
   try {
     const user = await registerUser(userData);
     localStorage.setItem('accessToken', user.data.token);
+    manageToast(dispatch,{
+      status: 'success',
+      message: `Welcome, ${user.data.user.name} user was created!`,
+    })
     dispatch(succesAuthUser(user.data));
   } catch (err) {
     dispatch(failAuthUser(err.message));
+    manageToast(dispatch,{
+      status: 'error',
+      message: err.response.data.message,
+    })
   }
 };
 
@@ -64,8 +73,16 @@ export const authUser = (userData) => async (dispatch) => {
     const user = await loginUser(userData);
     localStorage.setItem('accessToken', user.data.token);
     dispatch(succesAuthUser(user.data));
+    manageToast(dispatch,{
+      status: 'success',
+      message: `Welcome ${user.data.user.name}!Have you good visit!`,
+    })
   } catch (err) {
     dispatch(failAuthUser(err.response.data.message));
+    manageToast(dispatch,{
+      status: 'error',
+      message: err.response.data.message,
+    })
   }
 };
 

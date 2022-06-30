@@ -1,5 +1,5 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import AuthTypeComponent from './LoginPage/AuthTypeComponent';
 import BookStores from './EntarteimentPage/BookStores';
 import Cafes from './EntarteimentPage/Cafes';
@@ -22,6 +22,7 @@ import PublicRoute from './PublicRoute';
 import routes from '../consts/routes.js';
 import { getUser } from '../redux/actions/authActions';
 import styles from './App.module.scss';
+import StatusToast from './StatusToast/StatusToast';
 
 function App() {
   const {
@@ -39,6 +40,7 @@ function App() {
     singUpPage,
   } = routes;
   const dispatch = useDispatch();
+  const toast = useSelector((state) => state.toastReducer);
 
   React.useEffect(() => {
     if (localStorage.getItem('accessToken') ) {
@@ -79,6 +81,7 @@ function App() {
           </Route>
         </Routes>
       </main>
+      {toast.length > 0 && <StatusToast/>}
     </div>
   );
 }

@@ -19,6 +19,9 @@ const startCurrentUser = 'START_CURRENT_USER';
 const successCurrentUser = 'SUCCESS_CURRENT_USER';
 const failCurrentUser = 'FAIL_CURRENT_USER';
 
+const addToast = 'ADD_TOAST';
+const removeToast = 'REMOVE_TOAST';
+
 const types =  {
   getStarAll,
   getSuccessAll,
@@ -32,7 +35,9 @@ const types =  {
   resetToken,
   startCurrentUser,
   successCurrentUser,
-  failCurrentUser
+  failCurrentUser,
+  addToast,
+  removeToast
 }
 
 export default types;

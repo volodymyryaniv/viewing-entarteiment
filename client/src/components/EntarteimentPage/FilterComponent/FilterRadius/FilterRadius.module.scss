@@ -76,7 +76,7 @@ $minRadius: '200m';
         content: $minRadius;
         color: $lightestText;
         padding: 5px;
-        @include distancePosition(45px,$minRadiusColor,0.4,center);
+        @include distancePosition(40px,$minRadiusColor,0.4,center);
       }
       &:checked:before {
         content: $minRadius;
