@@ -22,7 +22,7 @@ import PublicRoute from './PublicRoute';
 import routes from '../consts/routes.js';
 import { getUser } from '../redux/actions/authActions';
 import styles from './App.module.scss';
-import StatusToast from './StatusToast/StatusToast';
+import StatusToastPortal from './StatusToastPortal';
 
 function App() {
   const {
@@ -81,7 +81,7 @@ function App() {
           </Route>
         </Routes>
       </main>
-      {toast.length > 0 && <StatusToast/>}
+      <StatusToastPortal/>
     </div>
   );
 }
