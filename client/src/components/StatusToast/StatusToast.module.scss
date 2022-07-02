@@ -11,56 +11,49 @@
   align-items: center;
 }
 
-.wrapper {
-  position: absolute;
-  bottom: 30px;
-  right: 20px;
-  overflow: hidden;
-  .toastContainer {
-    position: relative;
-    width: 280px;
-    margin: 10px; 
-    animation: move 1s ease-out;
-    .error{
-      @include messageStyles($errorColor);
-    }
-    .success{
-      @include messageStyles($sussesColor);
-    }
-    .statusIcon{
-      display: block;
-      width: 50px;
-      height: 50px;
-      padding: 5px;
-    }
-    .statusText{
-      color: $lightestText;
-      margin: 5px 5px 5px 10px;
-      p{
-        margin: 0;
-        font-size: 0.8rem;
-        text-transform: capitalize;
-        &:first-child{
-          font-weight: 700;
-          font-size: 1.1rem;
-        }
-      }
-    }
-    .remove{
-      color: $lightestText;
-      width: 12px;
-      position: absolute;
-      top: 5px;
-      right: 5px;
-      opacity: 0.8;
-      &:hover{
-        opacity: 1;
-        cursor: pointer;
+.toastContainer {
+  position: relative;
+  width: 280px;
+  margin: 10px; 
+  animation: move 1s ease-out;
+  .error{
+    @include messageStyles($errorColor);
+  }
+  .success{
+    @include messageStyles($sussesColor);
+  }
+  .statusIcon{
+    display: block;
+    width: 50px;
+    height: 50px;
+    padding: 5px;
+  }
+  .statusText{
+    color: $lightestText;
+    margin: 5px 5px 5px 10px;
+    p{
+      margin: 0;
+      font-size: 0.8rem;
+      text-transform: capitalize;
+      &:first-child{
+        font-weight: 700;
+        font-size: 1.1rem;
       }
     }
   }
+  .remove{
+    color: $lightestText;
+    width: 12px;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    opacity: 0.8;
+    &:hover{
+      opacity: 1;
+      cursor: pointer;
+    }
+  }
 }
-
 
 @keyframes move {
   0%{

@@ -5,6 +5,7 @@ import styles from './StatusToastPortal.module.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import { removeToast } from '../../redux/actions/toastActions';
 import { v4 } from 'uuid';
+import StatusToast from '../StatusToast/StatusToast';
 
 const StatusToastPortal = () => {
   const toast = useSelector((state) => state.toastReducer);
@@ -33,35 +34,18 @@ const StatusToastPortal = () => {
     }
   }, [toast]);
 
-  const onRemoveToast = (id) => {
-    dispatch(removeToast(id));
-  };
-
   return (
     loaded &&
     ReactDOM.createPortal(
       <div className={styles.wrapper}>
         {toast.map(({ status, id, message }) => {
           return (
-            <div key={id} className={styles.toastContainer}>
-              <div className={styles[status]}>
-                <img
-                  className={styles.statusIcon}
-                  src={`/public-img/icons/${status}.svg`}
-                  alt={`${status} error icon`}
-                />
-                <div className={styles.statusText}>
-                  <p>{status}</p>
-                  <p>{message}</p>
-                </div>
-                <img
-                  className={styles.remove}
-                  src={'/public-img/icons/removecross.svg'}
-                  alt="close cross"
-                  onClick={() => onRemoveToast(id)}
-                />
-              </div>
-            </div>
+            <StatusToast
+              key={id}
+              status={status}
+              message={message}
+              id={id}
+            />
           );
         })}
       </div>,

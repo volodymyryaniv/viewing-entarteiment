@@ -1,55 +1,38 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import styles from './StatusToast.module.scss';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { removeToast } from '../../redux/actions/toastActions';
 
-const StatusToast = () => {
-  const toast = useSelector((state) => state.toastReducer);
+const StatusToast = ({ status,id,message }) => {
   const dispatch = useDispatch();
 
-  const element = document.createElement('div');
-  React.useEffect(() => {
-    document.body.appendChild(element);
-    return () => {
-      return document.body.removeChild(element)
-    };
-  });
-
   const onRemoveToast = (id) => {
-    dispatch({ type: 'REMOVE_TOAST', payload: id});
+    dispatch(removeToast(id));
   };
-
   return (
-    ReactDOM.createPortal(
-      <div className={styles.wrapper}>
-        {toast.map((obj) => {
-          return (
-            <div key={obj.id} className={styles.toastContainer}>
-              <div className={styles[obj.status]}>
-                <img
-                  className={styles.statusIcon}
-                  src={`/public-img/icons/${obj.status}.svg`}
-                  alt={`${obj.status} error icon`}
-                />
-                <div className={styles.statusText}>
-                  <p>{obj.status}</p>
-                  <p>{obj.message}</p>
-                </div>
-                <img
-                  className={styles.remove}
-                  src={'/public-img/icons/removecross.svg'}
-                  alt="close cross"
-                  onClick={() => onRemoveToast(obj.id)}
-                />
-              </div>
-            </div>
-          );
-        })}
-      </div>,
-      element
-    )
-  );
+    <div
+      className={styles.toastContainer}
+    >
+      <div className={styles[status]}>
+        <img
+          className={styles.statusIcon}
+          src={`/public-img/icons/${status}.svg`}
+          alt={`${status} error icon`}
+        />
+        <div className={styles.statusText}>
+          <p>{status}</p>
+          <p>{message}</p>
+        </div>
+        <img
+          className={styles.remove}
+          src={'/public-img/icons/removecross.svg'}
+          alt="close cross"
+          onClick={() => onRemoveToast(id)}
+        />
+      </div>
+    </div>
+  )
 };
 
 StatusToast.propTypes = {};
