@@ -23,9 +23,10 @@ authRouter.post('/authorization/singin', async(req, res, next) => {
   }
 });
 
-authRouter.post('/authorization/singin/current', async(req, res, next) => {
+authRouter.get('/authorization/singin/current', async(req, res, next) => {
   try {
-    const user = await getCurrentUser({...req.body});
+    const token = req.headers.authorization.split(' ')[1];
+    const user = await getCurrentUser(token);
     res.send(user);
   } catch (err) {
     return next(err);

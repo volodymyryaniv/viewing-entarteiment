@@ -1,5 +1,5 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import AuthTypeComponent from './LoginPage/AuthTypeComponent';
 import BookStores from './EntarteimentPage/BookStores';
 import Cafes from './EntarteimentPage/Cafes';
@@ -40,7 +40,6 @@ function App() {
     singUpPage,
   } = routes;
   const dispatch = useDispatch();
-  const toast = useSelector((state) => state.toastReducer);
 
   React.useEffect(() => {
     if (localStorage.getItem('accessToken') ) {
@@ -60,6 +59,7 @@ function App() {
           <Route path={`${homePage}*`} element={<MainPage />}>
             <Route index element={<HomePage />} />
             <Route path={contactsPage} element={<ContactsPage />} />
+            <Route path={topPage} element={<TopPlaces />} />
             <Route element={<PublicRoute />}>
               <Route path={`${authPage}/*`} element={<LoginPage />}>
                 <Route index element={<AuthTypeComponent />} />
@@ -68,7 +68,6 @@ function App() {
               </Route>
             </Route>
           </Route>
-          <Route path={topPage} element={<TopPlaces />} />
           <Route path={historyPage} element={<HistoryPage />} />
           <Route path={`${attractionsPage}/*`} element={<EntarteimentPage />}>
             <Route index element={<EntarteimentNavigation />} />

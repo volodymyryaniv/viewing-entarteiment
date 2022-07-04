@@ -2,11 +2,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './TopPlaces.module.scss';
 
-const TopPlaces = () => (
-  <div className={styles.TopPlaces} data-testid="TopPlaces">
-    TopPlaces Component
-  </div>
-);
+const TopPlaces = () => {
+  return (
+    <div className={styles.background} data-testid="TopPlaces">
+      <article className={styles.container}>
+        TopPlaces Component
+      </article>
+    </div>
+  )
+};
 
 TopPlaces.propTypes = {};
 

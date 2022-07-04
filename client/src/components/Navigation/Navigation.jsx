@@ -18,7 +18,7 @@ const Navigation = ({ isAuthenticated }) => {
           alt="Lviv logo"
         />
       </Link>
-      <div>
+      <div className={styles.linkContainer}>
         {navLinks.map(({ id, linkName, route }) => {
           return (
             <NavLink to={route} key={id} className={name}>

@@ -20,7 +20,7 @@ const UserProfile = ({ userName,resetToken }) => {
     return name ? name.split(' ').map(word => word[0].toUpperCase()).slice(0,2).join('') : '';
   };
 
-  const letters = React.useMemo(() => getLetters(userName));
+  const letters = React.useMemo(() => getLetters(userName), [userName]);
   return (
     <div className={styles.container} data-testid="UserProfile">
       <div className={styles.label} onClick={onShowMenu}>

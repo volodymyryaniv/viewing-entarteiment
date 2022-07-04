@@ -88,9 +88,8 @@ export const authUser = (userData) => async (dispatch) => {
 
 export const getUser = () => async (dispatch) => {
   dispatch(startCurrentUser());
-  const token = localStorage.getItem('accessToken');
   try {
-    const user = await getCurrentUser(token);
+    const user = await getCurrentUser();
     dispatch(succesCurrentUser(user.data));
   } catch (err) {
     dispatch(failCurrentUser(err.response.data.message));
